@@ -87,26 +87,19 @@ for diri in [dir1, dir2, dir3, dir4]:
       s_1.append(eigval[0])
       s_2.append(eigval[1])
       s_3.append(eigval[2])
-      eigvectors0 = np.append(eigvectors0, np.linalg.norm(eigvect[:, 0]))
-      eigvectors1 = np.append(eigvectors1, np.linalg.norm(eigvect[:, 1]))
-      eigvectors2 = np.append(eigvectors2, np.linalg.norm(eigvect[:, 2]))
+      eigvectors0.append(eigvect[0])
+      eigvectors1.append(eigvect[1])
+      eigvectors2.append(eigvect[2])
+      # eigvectors0 = np.append(eigvectors0, np.linalg.norm(eigvect[:, 0]))
+      # eigvectors1 = np.append(eigvectors1, np.linalg.norm(eigvect[:, 1]))
+      # eigvectors2 = np.append(eigvectors2, np.linalg.norm(eigvect[:, 2]))
+      
+      
+s1=np.array(s_1).reshape(4,len(B))
+s2=np.array(s_2).reshape(4,len(B))
+s3=np.array(s_3).reshape(4,len(B))
 
-print(len(eigvectors0)/4)
-# Convert results to numpy arrays for plotting
-eigvectors0 = np.array(eigvectors0).reshape((4, int(len(eigvectors0)/4)))
-eigvectors1 = np.array(eigvectors1).reshape((4, int(len(eigvectors1)/4)))
-eigvectors2 = np.array(eigvectors2).reshape((4, int(len(eigvectors2)/4)))
-
-# Plotting the eigenvector lengths vs the magnetic field B
 plt.figure(figsize=(12, 8))
-#for i in range(4):
-plt.plot(B, eigvectors0[0], label=f'Direction {1} - Eigenvector 0')
-plt.plot(B, eigvectors1[0], label=f'Direction {1} - Eigenvector 1')
-plt.plot(B, eigvectors2[0], label=f'Direction {1} - Eigenvector 2')
-
-plt.xlabel('Magnetic Field (B)')
-plt.ylabel('Eigenvector Length')
-plt.title('Eigenvector Length vs Magnetic Field')
-plt.legend()
-plt.grid(True)
-plt.show()
+plt.plot(B, s1[0], label=f's1')
+plt.plot(B, s2[0], label=f's2')
+plt.plot(B, s3[0], label=f's3')
